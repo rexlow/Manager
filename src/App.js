@@ -1,12 +1,26 @@
 import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { View, Text } from 'react-native';
+import reducers from './reducers';
+
+import firebase from 'firebase';
 
 class App extends Component {
+  componentWillMount() {
+    const config = {
+      apiKey: 'AIzaSyC4lnlYyR9OnMdVSgLwyeiEiFBfTWBEBBU',
+      authDomain: 'manager-889ca.firebaseapp.com',
+      databaseURL: 'https://manager-889ca.firebaseio.com',
+      storageBucket: '',
+      messagingSenderId: '716102442226'
+    };
+    firebase.initializeApp(config);
+  }
+  
   render(){
     return(
-      <Provider>
+      <Provider store={createStore(reducers)}>
         <View>
           <Text>
             App
