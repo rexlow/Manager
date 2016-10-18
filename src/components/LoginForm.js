@@ -13,26 +13,26 @@ import Spinner from './common/Spinner';
 class LoginForm extends Component {
   onEmailChange(text) {
     this.props.emailChanged(text);
-  }
+  };
 
   onPasswordChange(text) {
     this.props.passwordChanged(text);
-  }
+  };
 
   onButtonPress(){
     const { email, password } = this.props;
     this.props.loginUser({ email, password });
-  }
+  };
 
   renderButton() {
     if (this.props.loading){
-      return <Spinner size="large" />
-    }
+      return <Spinner size="large" />;
+    };
 
     return (
       <Button onPress={this.onButtonPress.bind(this)}>Login</Button>
-    )
-  }
+    );
+  };
 
   render(){
     return(
@@ -61,8 +61,8 @@ class LoginForm extends Component {
         </CardSection>
       </Card>
     );
-  }
-}
+  };
+};
 
 const styles = {
   errorText: {
@@ -70,12 +70,12 @@ const styles = {
     alignSelf: 'center',
     color: 'red'
   }
-}
+};
 
 const mapStateToProps = ({ auth }) => {
   const { email, password, error, loading } = auth;
   return { email, password, error, loading };
-}
+};
 
 export default connect(mapStateToProps, {
    emailChanged, passwordChanged, loginUser
