@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { employeeUpdate } from './../components/actions';
 import { View, Text } from 'react-native';
 
 import Card from './common/Card';
@@ -15,12 +17,16 @@ class EmployeeCreate extends Component {
           <Input
             label="Name"
             placeholder="Jane"
+            value={this.props.name}
+            onChangeText={value => this.props.employeeUpdate({ prop: 'name', value})}
           />
         </CardSection>
         <CardSection>
           <Input
             label="Phone"
             placeholder="555-555-555"
+            value={this.props.phone}
+            onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value})}
           />
         </CardSection>
         <CardSection>
@@ -34,4 +40,9 @@ class EmployeeCreate extends Component {
   };
 };
 
-export default EmployeeCreate;
+const mapStateToProps = ({ employeeForm }) => {
+  const { name, phone, shift } = employeeForm;
+  return { name, phone, shift };
+}
+
+export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
