@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { employeeUpdate } from './../actions';
-import { View, Text } from 'react-native';
+import { View, Text, Picker } from 'react-native';
 
 import Card from './common/Card';
 import CardSection from './common/CardSection';
@@ -29,15 +29,36 @@ class EmployeeCreate extends Component {
             onChangeText={value => this.props.employeeUpdate({ prop: 'phone', value})}
           />
         </CardSection>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.pickerLabel}>Shift</Text>
+          <Picker
+            selectedValue={this.props.shift}
+            onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
+            style={{ flex: 1 }}>
+            <Picker.Item label="Monday" value="Monday" />
+            <Picker.Item label="Tuesday" value="Tuesday" />
+            <Picker.Item label="Wednesday" value="Wednesday" />
+            <Picker.Item label="Thursday" value="Thursday" />
+            <Picker.Item label="Friday" value="Friday" />
+            <Picker.Item label="Saturday" value="Saturday" />
+            <Picker.Item label="Sunday" value="Sunday" />
+          </Picker>
+        </CardSection>
         <CardSection>
           <Button>
             Create
           </Button>
         </CardSection>
-        <CardSection></CardSection>
       </Card>
     );
   };
+};
+
+const styles = {
+  pickerLabel: {
+    fontSize: 18,
+    paddingLeft: 20
+  }
 };
 
 const mapStateToProps = ({ employeeForm }) => {
