@@ -13,6 +13,7 @@ class EmployeeCreate extends Component {
 
   onButtonPress() {
     const { name, phone, shift } = this.props;
+
     this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
   }
 
@@ -67,9 +68,12 @@ const styles = {
   }
 };
 
-const mapStateToProps = ({ employeeForm }) => {
-  const { name, phone, shift } = employeeForm;
-  return { name, phone, shift };
-}
+const mapStateToProps = (state) => {
+  const { name, phone, shift } = state.employeeForm;
 
-export default connect(mapStateToProps, { employeeUpdate, employeeCreate })(EmployeeCreate);
+  return { name, phone, shift };
+};
+
+export default connect(mapStateToProps, {
+  employeeUpdate, employeeCreate
+})(EmployeeCreate);
