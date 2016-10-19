@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 import { connect } from 'react-redux';
-import { emailChanged, passwordChanged, loginUser } from './actions/';
+import { emailChanged, passwordChanged, loginUser } from './../actions/';
 
 import Card from './common/Card';
 import CardSection from './common/CardSection';

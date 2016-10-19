@@ -5,7 +5,7 @@ import {
    LOGIN_USER_SUCCESS,
    LOGIN_USER_FAIL,
    LOGIN_USER
-} from './../components/actions/types';
+} from './../actions/types';
 
 const INITIAL_STATE = { email: '', password: '', user: null, error: '', loading: false};
 
